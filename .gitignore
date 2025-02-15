@@ -1,6 +1,7 @@
 **/.idea/
 **/.scannerwork/
 build/
+.gradle
 
 # Compiled class file
 *.class
