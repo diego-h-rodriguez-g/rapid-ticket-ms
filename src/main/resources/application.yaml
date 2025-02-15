@@ -3,6 +3,6 @@ spring:
     name: rapid-ticket-ms
 
 server:
-  port: 8080
+  port: 80
   servlet:
     context-path: /rapid_ticket
