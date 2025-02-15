@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: rapid-ticket-ms
+
+server:
+  port: 8080
+  servlet:
+    context-path: /rapid_ticket
