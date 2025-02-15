@@ -3,6 +3,7 @@ package com.dev.rapid_ticket_ms.javastack.service;
 import com.dev.rapid_ticket_ms.commons.utilities.Utilities;
 import com.dev.rapid_ticket_ms.javastack.model.JavaStackResponse;
 import org.springframework.boot.SpringBootVersion;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class JavaStackServiceImpl implements JavaStackService{
     }
 
     @Override
+    @Cacheable(value = "JavaStackResponse", key = "#root.method.name")
     public JavaStackResponse getJavaStack() {
         JavaStackResponse getJavaStackResponse = JavaStackResponse.builder()
                 .code(HttpStatus.OK.value())
