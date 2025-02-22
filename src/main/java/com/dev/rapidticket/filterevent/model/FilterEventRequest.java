@@ -1,6 +1,7 @@
 package com.dev.rapidticket.filterevent.model;
 
 import com.dev.rapidticket.filterevent.dto.SortFieldTypeEnum;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Positive;
 import lombok.Builder;
@@ -40,6 +41,7 @@ public class FilterEventRequest {
 
     private String text;
 
+    @JsonAlias("sortField")
     private SortFieldTypeEnum sortFieldTypeEnum;
 
     private Boolean isSortOrderAsc;

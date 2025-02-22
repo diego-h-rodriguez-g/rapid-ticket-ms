@@ -12,5 +12,5 @@ import java.util.List;
 public class FilterEventResponse {
     private Integer rowCount;
     private String message;
-    private List<FilterEventResponseDTO> filterEventResponseDTOList;
+    private List<FilterEventResponseDTO> eventList;
 }

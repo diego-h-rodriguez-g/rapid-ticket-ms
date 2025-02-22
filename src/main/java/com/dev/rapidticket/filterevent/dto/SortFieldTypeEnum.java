@@ -11,8 +11,10 @@ public enum SortFieldTypeEnum {
     placeName("p.place_name"),
     sectorId("s.sector_id"),
     sectorName("s.sector_name"),
-    maxPrice("s.price_amount"),
-    minPrice("s.price_amount"),
+    sectorPrice("s.sector_price"),
+    maxPrice("s.sector_price"),
+    minPrice("s.sector_price"),
+    eventDateTime("e.event_datetime"),
     initEventDate("e.event_datetime"),
     endEventDate("e.event_datetime"),
     availableSeats("available_seats");
