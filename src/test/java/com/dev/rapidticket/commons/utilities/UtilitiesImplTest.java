@@ -44,7 +44,7 @@ public class UtilitiesImplTest {
     }
 
     @Test
-    public void testConvertObjectToString_Failure() throws JsonProcessingException {
+    public void testConvertObjectToStringFailure() throws JsonProcessingException {
         Object inputObject = new Object();
 
         when(objectMapper.writeValueAsString(inputObject)).thenThrow(JsonProcessingException.class);
