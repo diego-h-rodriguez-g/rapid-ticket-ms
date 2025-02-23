@@ -27,6 +27,7 @@ public class SectorSeatServiceImpl implements SectorSeatService {
     public SectorSeatResponse getAvailableSeats(Integer eventId) {
         log.log(Level.INFO, "A new get available seats list request has been started with the following data: {0}", new Object[]{eventId});
         List<SectorSeatDTO> availableSeats = sectorSeatRepository.getAvailableSeats(eventId);
+        log.log(Level.INFO, "A new get available seats list response has been completed with a total of records obtained: {0}", availableSeats.size());
         return SectorSeatResponse.builder()
                 .rowCount(availableSeats.size())
                 .message(RESPONSE_MESSAGE_SECTOR_SEAT)
