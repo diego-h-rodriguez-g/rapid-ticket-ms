@@ -15,13 +15,13 @@ public class Sector {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer sectorId;
 
-    @Column(name = "event_id")
-    private Integer eventId;
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
     @Column(name = "sector_name")
     private String sectorName;
 
     @Column(name = "sector_price")
     private BigDecimal sectorPrice;
-
 }

@@ -6,6 +6,4 @@ public class Constants {
 
     public static final String ERROR_MESSAGE_FUTURE = "The field must be a date greater than the current date";
 
-    public static final String RESPONSE_MESSAGE_JAVA_STACK = "Test service executed successfully";
-
 }

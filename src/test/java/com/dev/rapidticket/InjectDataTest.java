@@ -6,18 +6,22 @@ import com.dev.rapidticket.filterevent.dto.SortFieldTypeEnum;
 import com.dev.rapidticket.filterevent.model.FilterEventRequest;
 import com.dev.rapidticket.filterevent.model.FilterEventResponse;
 import com.dev.rapidticket.javastack.model.JavaStackResponse;
+import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
+import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.dev.rapidticket.commons.utilities.Constants.RESPONSE_MESSAGE_JAVA_STACK;
 import static com.dev.rapidticket.filterevent.utilities.Constants.INIT_QUERY;
 import static com.dev.rapidticket.filterevent.utilities.Constants.RESPONSE_MESSAGE_FILTER_EVENT;
+import static com.dev.rapidticket.javastack.utilities.Constants.RESPONSE_MESSAGE_JAVA_STACK;
+import static com.dev.rapidticket.sectorseat.utilities.Constants.RESPONSE_MESSAGE_SECTOR_SEAT;
 
 public class InjectDataTest {
 
@@ -84,5 +88,27 @@ public class InjectDataTest {
                     .availableSeats(30L).build();
         }
         return FilterEventResponseDTO.builder().build();
+    }
+
+    public SectorSeatResponse buildSectorSeatResponse(int index) {
+        if (index == 200) {
+            return SectorSeatResponse.builder().rowCount(1).message(RESPONSE_MESSAGE_SECTOR_SEAT).availableSeats(Collections.singletonList(buildSectorSeatDTO(index))).build();
+        }
+        return SectorSeatResponse.builder().build();
+    }
+
+    public SectorSeatDTO buildSectorSeatDTO(int index) {
+        if (index == 200) {
+            return SectorSeatDTO.builder()
+                    .sectorsSeatsId(61)
+                    .seatId(21)
+                    .eventId(2)
+                    .sectorId(2)
+                    .sectorName("General")
+                    .sectorPrice(BigDecimal.TEN)
+                    .seatNumber(1)
+                    .build();
+        }
+        return SectorSeatDTO.builder().build();
     }
 }
