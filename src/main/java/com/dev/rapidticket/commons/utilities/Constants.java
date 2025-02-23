@@ -8,6 +8,4 @@ public class Constants {
 
     public static final String RESPONSE_MESSAGE_JAVA_STACK = "Test service executed successfully";
 
-    public static final String RESPONSE_MESSAGE_FILTER_EVENT = "The query on the events table was successful";
-
 }

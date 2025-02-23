@@ -1,8 +1,9 @@
 package com.dev.rapidticket.filterevent.repository;
 
-import com.dev.rapidticket.filterevent.model.FilterEventRequest;
-import com.dev.rapidticket.filterevent.model.FilterEventResponse;
+import com.dev.rapidticket.filterevent.dto.FilterEventRequestDTO;
+
+import java.util.List;
 
 public interface FilterEventRepository  {
-    FilterEventResponse getEvents(FilterEventRequest filterEventRequest);
+    List<Object[]> getEvents(FilterEventRequestDTO filterEventRequestDTO);
 }
