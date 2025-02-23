@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.util.logging.Level;
 
-import static com.dev.rapidticket.commons.utilities.Constants.RESPONSE_MESSAGE_JAVA_STACK;
+import static com.dev.rapidticket.javastack.utilities.Constants.RESPONSE_MESSAGE_JAVA_STACK;
 
 @Service
 public class JavaStackServiceImpl implements JavaStackService{
