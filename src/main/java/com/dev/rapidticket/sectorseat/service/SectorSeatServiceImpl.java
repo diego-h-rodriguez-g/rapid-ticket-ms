@@ -2,7 +2,7 @@ package com.dev.rapidticket.sectorseat.service;
 
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
 import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
-import com.dev.rapidticket.sectorseat.repository.SectorSeatRepository;
+import com.dev.rapidticket.commons.repository.SectorSeatRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 

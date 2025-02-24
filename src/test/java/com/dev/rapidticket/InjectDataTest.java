@@ -1,5 +1,7 @@
 package com.dev.rapidticket;
 
+import com.dev.rapidticket.createreservation.model.CreateReservationRequest;
+import com.dev.rapidticket.createreservation.model.CreateReservationResponse;
 import com.dev.rapidticket.filterevent.dto.FilterEventRequestDTO;
 import com.dev.rapidticket.filterevent.dto.FilterEventResponseDTO;
 import com.dev.rapidticket.filterevent.dto.SortFieldTypeEnum;
@@ -11,13 +13,11 @@ import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import static com.dev.rapidticket.createreservation.utilities.Constants.RESPONSE_MESSAGE_RESERVATION;
 import static com.dev.rapidticket.filterevent.utilities.Constants.INIT_QUERY;
 import static com.dev.rapidticket.filterevent.utilities.Constants.RESPONSE_MESSAGE_FILTER_EVENT;
 import static com.dev.rapidticket.javastack.utilities.Constants.RESPONSE_MESSAGE_JAVA_STACK;
@@ -92,23 +92,28 @@ public class InjectDataTest {
 
     public SectorSeatResponse buildSectorSeatResponse(int index) {
         if (index == 200) {
-            return SectorSeatResponse.builder().rowCount(1).message(RESPONSE_MESSAGE_SECTOR_SEAT).availableSeats(Collections.singletonList(buildSectorSeatDTO(index))).build();
+            return SectorSeatResponse.builder().rowCount(1).message(RESPONSE_MESSAGE_SECTOR_SEAT).availableSeats(Collections.singletonList(buildSectorSeatDTO())).build();
         }
         return SectorSeatResponse.builder().build();
     }
 
-    public SectorSeatDTO buildSectorSeatDTO(int index) {
-        if (index == 200) {
-            return SectorSeatDTO.builder()
-                    .sectorsSeatsId(61)
-                    .seatId(21)
-                    .eventId(2)
-                    .sectorId(2)
-                    .sectorName("General")
-                    .sectorPrice(BigDecimal.TEN)
-                    .seatNumber(1)
-                    .build();
-        }
+    public SectorSeatDTO buildSectorSeatDTO() {
         return SectorSeatDTO.builder().build();
+    }
+
+    public CreateReservationRequest buildCreateReservationRequest(int index) {
+        if (index == 200) {
+            List<Integer> sectorSeatId = new ArrayList<>();
+            sectorSeatId.add(1);
+            return CreateReservationRequest.builder().customerDocumentNumber(10331234567L).customerName("customerName").sectorSeatIds(sectorSeatId).build();
+        }
+        return CreateReservationRequest.builder().build();
+    }
+
+    public CreateReservationResponse buildCreateReservationResponse(int index) {
+        if (index == 200) {
+            return CreateReservationResponse.builder().rowCount(index).message(RESPONSE_MESSAGE_RESERVATION).build();
+        }
+        return CreateReservationResponse.builder().build();
     }
 }

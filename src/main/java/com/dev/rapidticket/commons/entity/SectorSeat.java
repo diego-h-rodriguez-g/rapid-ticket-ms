@@ -26,4 +26,8 @@ public class SectorSeat {
 
     @Column(name = "seat_number")
     private Integer seatNumber;
+
+    @Version
+    @Column(name = "version")
+    private Integer version;
 }
