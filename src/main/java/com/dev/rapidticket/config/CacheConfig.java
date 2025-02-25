@@ -16,14 +16,15 @@ public class CacheConfig {
 
     @Bean
     public CacheManager cacheManager() {
-        CaffeineCacheManager seatsCache = new CaffeineCacheManager("SectorSeatResponse");
-        seatsCache.setCaffeine(Caffeine.newBuilder()
+        CaffeineCacheManager filterEventCache = new CaffeineCacheManager("FilterEventResponse");
+        filterEventCache.setCaffeine(Caffeine.newBuilder()
                 .expireAfterWrite(30, TimeUnit.SECONDS));
 
-        CaffeineCacheManager anotherCache = new CaffeineCacheManager("JavaStackResponse");
-        anotherCache.setCaffeine(Caffeine.newBuilder()
-                .expireAfterWrite(2, TimeUnit.MINUTES));
+        CaffeineCacheManager javaStackCache = new CaffeineCacheManager("JavaStackResponse");
+        javaStackCache.setCaffeine(Caffeine.newBuilder()
+                .expireAfterWrite(2, TimeUnit.MINUTES)
+                .maximumSize(2));
 
-        return new CompositeCacheManager(seatsCache, anotherCache);
+        return new CompositeCacheManager(filterEventCache, javaStackCache);
     }
 }

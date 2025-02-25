@@ -3,7 +3,6 @@ package com.dev.rapidticket.sectorseat.service;
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
 import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
 import com.dev.rapidticket.commons.repository.SectorSeatRepository;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,6 @@ public class SectorSeatServiceImpl implements SectorSeatService {
     }
 
     @Override
-    @Cacheable(value = "SectorSeatResponse", key = "#eventId")
     public SectorSeatResponse getAvailableSeats(Integer eventId) {
         log.log(Level.INFO, "A new get available seats list request has been started with the following data: {0}", new Object[]{eventId});
         List<SectorSeatDTO> availableSeats = sectorSeatRepository.getAvailableSeats(eventId);

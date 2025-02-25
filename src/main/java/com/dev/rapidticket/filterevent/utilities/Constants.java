@@ -23,4 +23,8 @@ public class Constants {
     public static final String AND_EVENT_INIT_DATETIME_GREATER_EQUALS = "AND e.event_datetime >= :initEventDate ";
     public static final String AND_EXPERIENCE_NAME_LIKE = "AND exp.experience_name ILIKE :text ";
     public static final String ORDER_BY_FIELD = " ORDER BY ";
+
+    private Constants() {
+        throw new IllegalStateException("Utility class");
+    }
 }
