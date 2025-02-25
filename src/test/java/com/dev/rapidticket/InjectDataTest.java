@@ -1,5 +1,6 @@
 package com.dev.rapidticket;
 
+import com.dev.rapidticket.commons.entity.Reservation;
 import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.createreservation.model.CreateReservationRequest;
 import com.dev.rapidticket.createreservation.model.CreateReservationResponse;
@@ -8,6 +9,9 @@ import com.dev.rapidticket.filterevent.dto.FilterEventResponseDTO;
 import com.dev.rapidticket.filterevent.dto.SortFieldTypeEnum;
 import com.dev.rapidticket.filterevent.model.FilterEventRequest;
 import com.dev.rapidticket.filterevent.model.FilterEventResponse;
+import com.dev.rapidticket.filterreservation.dto.ReservationDTO;
+import com.dev.rapidticket.filterreservation.model.FilterReservationRequest;
+import com.dev.rapidticket.filterreservation.model.FilterReservationResponse;
 import com.dev.rapidticket.javastack.model.JavaStackResponse;
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
 import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
@@ -19,6 +23,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import static com.dev.rapidticket.commons.utilities.Constants.RESPONSE_MESSAGE_FILTER_RESERVATION;
 import static com.dev.rapidticket.createreservation.utilities.Constants.RESPONSE_MESSAGE_RESERVATION;
 import static com.dev.rapidticket.filterevent.utilities.Constants.INIT_QUERY;
 import static com.dev.rapidticket.filterevent.utilities.Constants.RESPONSE_MESSAGE_FILTER_EVENT;
@@ -135,5 +140,27 @@ public class InjectDataTest {
                 .seatColumn(1)
                 .seatNumber(1)
                 .build();
+    }
+
+    public FilterReservationRequest buildFilterReservationRequest(int index) {
+        if (index == 200) {
+            return FilterReservationRequest.builder().customerDocumentNumber(10331234567L).build();
+        }
+        return FilterReservationRequest.builder().build();
+    }
+
+    public FilterReservationResponse buildFilterReservationResponse(int index) {
+        if (index == 200) {
+            return FilterReservationResponse.builder().rowCount(index).message(RESPONSE_MESSAGE_FILTER_RESERVATION).build();
+        }
+        return FilterReservationResponse.builder().message(RESPONSE_MESSAGE_FILTER_RESERVATION).build();
+    }
+
+    public Reservation buildReservation() {
+       return Reservation.builder().build();
+    }
+
+    public ReservationDTO buildReservationDTO() {
+        return ReservationDTO.builder().build();
     }
 }
