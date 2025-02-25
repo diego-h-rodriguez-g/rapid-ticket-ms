@@ -6,6 +6,7 @@ import com.dev.rapidticket.filterevent.mapper.FilterEventMapper;
 import com.dev.rapidticket.filterevent.model.FilterEventRequest;
 import com.dev.rapidticket.filterevent.model.FilterEventResponse;
 import com.dev.rapidticket.filterevent.repository.FilterEventRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,6 +34,7 @@ public class FilterEventServiceImpl implements FilterEventService {
     }
 
     @Override
+    @Cacheable(value = "FilterEventResponse", key = "#filterEventRequest")
     public FilterEventResponse getFilterEvents(FilterEventRequest filterEventRequest) {
         log.log(Level.INFO, "A new filter events request has been started with the following data: {0}", new Object[]{utilities.convertObjectToString(filterEventRequest)});
         FilterEventRequestDTO filterEventRequestDTO = filterEventPrepareData.prepareQueryData(filterEventRequest);

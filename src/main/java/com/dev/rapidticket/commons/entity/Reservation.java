@@ -1,8 +1,7 @@
 package com.dev.rapidticket.commons.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
@@ -10,8 +9,10 @@ import java.time.LocalDateTime;
 
 @Builder
 @Entity
-@Table(name = "reservations")
 @Data
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Table(name = "reservations")
 public class Reservation {
 
     @Id
