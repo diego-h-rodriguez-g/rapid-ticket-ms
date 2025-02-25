@@ -1,6 +1,7 @@
 package com.dev.rapidticket.commons.repository;
 
 import com.dev.rapidticket.commons.entity.SectorSeat;
+import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -32,5 +33,5 @@ public interface SectorSeatRepository extends JpaRepository<SectorSeat, Integer>
             "JOIN rapid_ticket.places p ON e.place_id = p.place_id " +
             "JOIN rapid_ticket.seats st ON ss.seat_id = st.seat_id " +
             "WHERE ss.sectors_seats_id IN (:sectorSeatIds)", nativeQuery = true)
-    List<Object[]> getInfoReservation(List<Integer> sectorSeatIds);
+    List<CreateReservationDTO> getInfoReservation(List<Integer> sectorSeatIds);
 }

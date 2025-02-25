@@ -1,6 +1,7 @@
 package com.dev.rapidticket.createreservation.service;
 
 import com.dev.rapidticket.commons.repository.SectorSeatRepository;
+import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.createreservation.mapper.CreateReservationMapper;
 import com.dev.rapidticket.createreservation.model.CreateReservationRequest;
 import com.dev.rapidticket.createreservation.model.CreateReservationResponse;
@@ -38,15 +39,18 @@ public class CreateReservationServiceImpl implements CreateReservationService {
         Integer totalSectorSeatIds = sectorSeatRepository.updateSectorsSeats(createReservationRequest.getSectorSeatIds());
         log.log(Level.INFO, "The reservation process has been generated successfully. Number of reserved seats: {0}", totalSectorSeatIds);
         createReservationUtilities.validateRequestConsistency(createReservationRequest.getSectorSeatIds().size(), totalSectorSeatIds);
-        List<Object[]> reservationDTOList = sectorSeatRepository.getInfoReservation(createReservationRequest.getSectorSeatIds());
-        log.log(Level.INFO, "All the information for generating the reservation ticket has been obtained for {0} tickets", reservationDTOList.size());
-        createReservationUtilities.validateRequestConsistency(createReservationRequest.getSectorSeatIds().size(), reservationDTOList.size());
-        List<Object[]> customerReservationObjectList = createReservationMapper.reservationObjectToCustomerReservationObject(reservationDTOList, createReservationRequest.getCustomerDocumentNumber(), createReservationRequest.getCustomerName());
+        List<CreateReservationDTO> createReservationDTOList = sectorSeatRepository.getInfoReservation(createReservationRequest.getSectorSeatIds());
+        log.log(Level.INFO, "All the information for generating the reservation ticket has been obtained for {0} tickets", createReservationDTOList.size());
+        createReservationUtilities.validateRequestConsistency(createReservationRequest.getSectorSeatIds().size(), createReservationDTOList.size());
+        List<Object[]> customerReservationObjectList = createReservationMapper.reservationDTOToCustomerReservationObject(createReservationDTOList, createReservationRequest.getCustomerDocumentNumber(), createReservationRequest.getCustomerName());
         int[] rowCount = createReservationRepository.createReservations(customerReservationObjectList);
         createReservationUtilities.validateRequestConsistency(createReservationRequest.getSectorSeatIds().size(), rowCount.length);
         log.log(Level.INFO, "The reservation process has been completed for a total of registrations of: {0}", new Object[]{rowCount.length});
         return CreateReservationResponse.builder()
                 .rowCount(rowCount.length)
+                .reservationOwnerDocumentNumber(createReservationRequest.getCustomerDocumentNumber())
+                .reservationOwnerName(createReservationRequest.getCustomerName())
+                .reservationData(createReservationDTOList)
                 .message(RESPONSE_MESSAGE_RESERVATION)
                 .build();
     }

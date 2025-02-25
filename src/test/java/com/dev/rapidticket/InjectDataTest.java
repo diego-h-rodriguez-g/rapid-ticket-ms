@@ -1,5 +1,6 @@
 package com.dev.rapidticket;
 
+import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.createreservation.model.CreateReservationRequest;
 import com.dev.rapidticket.createreservation.model.CreateReservationResponse;
 import com.dev.rapidticket.filterevent.dto.FilterEventRequestDTO;
@@ -13,6 +14,7 @@ import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.core.SpringVersion;
 import org.springframework.http.HttpStatus;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -115,5 +117,23 @@ public class InjectDataTest {
             return CreateReservationResponse.builder().rowCount(index).message(RESPONSE_MESSAGE_RESERVATION).build();
         }
         return CreateReservationResponse.builder().build();
+    }
+
+    public CreateReservationDTO buildCreateReservationDTO() {
+        return CreateReservationDTO.builder()
+                .eventId(1)
+                .experienceId(1)
+                .experienceName("experienceName")
+                .placeId(1)
+                .placeName("placeName")
+                .sectorId(1)
+                .sectorName("sectorName")
+                .sectorPrice(BigDecimal.TEN)
+                .sectorsSeatsId(1)
+                .seatId(1)
+                .seatRow(1)
+                .seatColumn(1)
+                .seatNumber(1)
+                .build();
     }
 }
