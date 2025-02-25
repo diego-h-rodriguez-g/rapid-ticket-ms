@@ -57,7 +57,7 @@ jacocoTestReport {
 	afterEvaluate {
 		classDirectories.setFrom(files(classDirectories.files.collect {
 			fileTree(dir: it,
-					exclude: ['**/model/**', '**/dto/**', '**/exceptions/**', '**/config/**']
+					exclude: ['**/model/**', '**/dto/**', '**/exception/**', '**/config/**', '**/*Constants.class', '**/*RapidTicketMsApplication.class']
 			)
 		}))
 	}
