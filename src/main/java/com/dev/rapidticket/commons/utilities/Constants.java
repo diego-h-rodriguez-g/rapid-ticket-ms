@@ -11,4 +11,6 @@ public class Constants {
     public static final String ERROR_MESSAGE_NOT_BLANK = "The field cannot be null and must contain at least one non-whitespace character.";
 
     public static final String ERROR_MESSAGE_NOT_EMPTY = "The field cannot be null and must contain at least one character.";
+
+    public static final String RESPONSE_MESSAGE_FILTER_RESERVATION = "The query on the reservation table was successful";
 }
