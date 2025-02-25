@@ -3,7 +3,7 @@ package com.dev.rapidticket.sectorseat.service;
 import com.dev.rapidticket.InjectDataTest;
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
 import com.dev.rapidticket.sectorseat.model.SectorSeatResponse;
-import com.dev.rapidticket.sectorseat.repository.SectorSeatRepository;
+import com.dev.rapidticket.commons.repository.SectorSeatRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ public class SectorSeatServiceImplTest {
     @DisplayName("Should return a SectorSeatResponse in method getAvailableSeats")
     void returnSectorSeatResponseInGetAvailableSeats() {
         int eventId = 1;
-        List<SectorSeatDTO> sectorSeatDTOList = Collections.singletonList(injectDataTest.buildSectorSeatDTO(200));
+        List<SectorSeatDTO> sectorSeatDTOList = Collections.singletonList(injectDataTest.buildSectorSeatDTO());
         SectorSeatResponse expectedResponse = injectDataTest.buildSectorSeatResponse(200);
 
         when(sectorSeatRepository.getAvailableSeats(eventId)).thenReturn(sectorSeatDTOList);
