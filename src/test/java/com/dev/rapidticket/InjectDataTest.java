@@ -1,6 +1,6 @@
 package com.dev.rapidticket;
 
-import com.dev.rapidticket.commons.entity.Reservation;
+import com.dev.rapidticket.commons.entity.*;
 import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.createreservation.model.CreateReservationRequest;
 import com.dev.rapidticket.createreservation.model.CreateReservationResponse;
@@ -157,7 +157,26 @@ public class InjectDataTest {
     }
 
     public Reservation buildReservation() {
-       return Reservation.builder().build();
+       return Reservation.builder()
+               .reservationId(1)
+               .customerDocumentNumber(1L)
+               .customerName("name")
+               .event(new Event())
+               .eventDatetime(LocalDateTime.now())
+               .experience(new Experience())
+               .experienceName("experienceName")
+               .place(new Place())
+               .placeName("placeName")
+               .sector(new Sector())
+               .sectorName("sectorName")
+               .sectorPrice(BigDecimal.TEN)
+               .sectorSeat(new SectorSeat())
+               .seat(new Seat())
+               .seatRow(1)
+               .seatColumn(1)
+               .seatNumber(1)
+               .createdAt(LocalDateTime.now())
+               .build();
     }
 
     public ReservationDTO buildReservationDTO() {

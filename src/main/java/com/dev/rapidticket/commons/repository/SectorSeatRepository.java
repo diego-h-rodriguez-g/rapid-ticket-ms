@@ -3,6 +3,7 @@ package com.dev.rapidticket.commons.repository;
 import com.dev.rapidticket.commons.entity.SectorSeat;
 import com.dev.rapidticket.createreservation.dto.CreateReservationDTO;
 import com.dev.rapidticket.sectorseat.dto.SectorSeatDTO;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,8 +21,9 @@ public interface SectorSeatRepository extends JpaRepository<SectorSeat, Integer>
             "WHERE s.event_id = :eventId AND ss.available_seat = TRUE", nativeQuery = true)
     List<SectorSeatDTO> getAvailableSeats(Integer eventId);
 
+    @Transactional
     @Modifying
-    @Query("UPDATE SectorSeat ss SET ss.availableSeat = FALSE WHERE ss.id IN :sectorSeatIds AND ss.availableSeat = TRUE")
+    @Query("UPDATE SectorSeat ss SET ss.availableSeat = FALSE, ss.version = ss.version + 1 WHERE ss.id IN :sectorSeatIds AND ss.availableSeat = TRUE")
     Integer updateSectorsSeats(List<Integer> sectorSeatIds);
 
     @Query(value = "SELECT e.event_id, e.experience_id, exp.experience_name, e.place_id, p.place_name, s.sector_id, " +
