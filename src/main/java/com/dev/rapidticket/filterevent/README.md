@@ -3,6 +3,7 @@
 Servicio que lista eventos con asientos disponibles.
 
 ---
+
 ## Tabla de Contenido
 
 - [Descripción](#descripción)
@@ -11,11 +12,13 @@ Servicio que lista eventos con asientos disponibles.
 - [Response OK](#Response-OK)
 - [Response Bad Request](#Response-Bad-Request)
 - [Autores](#autores)
+
 ---
 
 ## Descripción
 
-Permite la búsqueda de eventos con asientos disponibles y filtrar los resultados por medio de varios filtros (todos los filtros son opcionales).
+Permite la búsqueda de eventos con asientos disponibles y filtrar los resultados por medio de varios filtros (todos los
+filtros son opcionales). Implementa Caffeine Caché.
 
 ---
 
@@ -23,8 +26,8 @@ Permite la búsqueda de eventos con asientos disponibles y filtrar los resultado
 
 #### POST/ http://rapid-ticket-ms-prod.eba-guv64myy.us-east-1.elasticbeanstalk.com/rapid_ticket/api/v1/events
 
-
 ## Request Body
+
 ```
 {
     "eventId": 8,
@@ -40,9 +43,11 @@ Permite la búsqueda de eventos con asientos disponibles y filtrar los resultado
     "sortOrder": true    
 }
 ```
+
 [Ir a la tabla de contenido](#Tabla-de-contenido)
 
 ### Response OK
+
 ```
 {
     "rowCount": 1,
@@ -63,9 +68,11 @@ Permite la búsqueda de eventos con asientos disponibles y filtrar los resultado
     ]
 }
 ```
+
 [Ir a la tabla de contenido](#Tabla-de-contenido)
 
 ## Response Bad Request
+
 ```
 {
     "timestamp": "2025-02-25T16:56:39.489+00:00",
@@ -74,6 +81,7 @@ Permite la búsqueda de eventos con asientos disponibles y filtrar los resultado
     "details": "Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.dev.rapidticket.filterevent.model.FilterEventResponse> com.dev.rapidticket.filterevent.controller.FilterEventController.getFilterEvents(com.dev.rapidticket.filterevent.model.FilterEventRequest): [Field error in object 'filterEventRequest' on field 'initEventDate': rejected value [2024-03-05T00:30]; codes [Future.filterEventRequest.initEventDate,Future.initEventDate,Future.java.time.LocalDateTime,Future]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [filterEventRequest.initEventDate,initEventDate]; arguments []; default message [initEventDate]]; default message [The field must be a date greater than the current date]] "
 }
 ```
+
 [Ir a la tabla de contenido](#Tabla-de-contenido)
 
 ## Autores
@@ -81,7 +89,7 @@ Permite la búsqueda de eventos con asientos disponibles y filtrar los resultado
 El equipo involucrado en la implementación de estos componentes se detalla a continuación:
 
 - Equipo de Desarrollo:
-  - Diego H. Rodríguez G. <diego.h.rodg@igmail.com>
+    - Diego H. Rodríguez G. <diego.h.rodg@igmail.com>
 
 ---
 [Ir a la tabla de contenido](#Tabla-de-contenido)

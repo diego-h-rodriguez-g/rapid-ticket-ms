@@ -75,4 +75,8 @@ public class Reservation {
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @Column(name = "event_datetime")
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime eventDatetime;
 }

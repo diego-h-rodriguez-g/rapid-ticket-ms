@@ -39,9 +39,9 @@ Las siguientes son las funcionalidades presentes en este repositorio:
 
 El código Se encuentra implementado
 con [Spring Boot 3.4.2](https://spring.io/blog/2025/01/23/spring-boot-3-4-2-available-now) y [Java 21 (Última versión LTS)](https://docs.oracle.com/en/java/javase/21/) usando las
-siguientes librerias:
+siguientes librerías:
 
-- [Caffeine](https://www.baeldung.com/java-caching-caffeine) - Gestión de caché para algunos sevicios
+- [Caffeine](https://www.baeldung.com/java-caching-caffeine) - Gestión de caché para algunos servicios
 - [Spring-data-jpa](https://spring.io/blog/2025/01/23/spring-boot-3-4-2-available-now) - Gestión de la capa de acceso a datos de la Base de
   Datos
 - [HikariCP](https://www.baeldung.com/hikaricp) - Gestión de conexiones de Base de Datos
